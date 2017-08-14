@@ -7,67 +7,80 @@ import Router from 'vue-router'
 // component: (resolve) => {
 //       require(['../components/login/login'], resolve)
 //     }
-const home = r => require.ensure([], () => r(require('../page/home/home')), 'home')
-const prod = r => require.ensure([], () => r(require('../page/products/prod')), 'prod')
-const prodList = r => require.ensure([], () => r(require('../page/products/prod-list')), 'prodList')
-const prodDetail = r => require.ensure([], () => r(require('../page/products/prod-detail')), 'prodDetail')
-const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
-const register = r => require.ensure([], () => r(require('../page/register/register')), 'register')
-const forget = r => require.ensure([], () => r(require('../page/forget/forget')), 'forget')
-const loan = r => require.ensure([], () => r(require('../page/loan/index')), 'loan')
-const find = r => require.ensure([], () => r(require('../page/find/index')), 'find')
-const user = r => require.ensure([], () => r(require('../page/user/index')), 'user')
+const Home = r => require.ensure([], () => r(require('@/page/home/home')), 'Home')
+const Prod = r => require.ensure([], () => r(require('@/page/products/prod')), 'Prod')
+const ProdList = r => require.ensure([], () => r(require('@/page/products/prod-list')), 'ProdList')
+const ProdDetail = r => require.ensure([], () => r(require('@/page/products/prod-detail')), 'ProdDetail')
+const Login = r => require.ensure([], () => r(require('@/page/login/login')), 'Login')
+const Register = r => require.ensure([], () => r(require('@/page/register/register')), 'Register')
+const Forget = r => require.ensure([], () => r(require('@/page/forget/forget')), 'Forget')
+const Loan = r => require.ensure([], () => r(require('@/page/loan/index')), 'Loan')
+const Find = r => require.ensure([], () => r(require('@/page/find/index')), 'Find')
+const User = r => require.ensure([], () => r(require('@/page/user/index')), 'User')
 
-const notfind = r => require.ensure([], () => r(require('../page/notfind/notfind')), 'notfind')
+const Notfind = r => require.ensure([], () => r(require('@/page/notfind/notfind')), 'Notfind')
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [{
-    path: '/',
-    redirect: '/home'
-  }, {
-    path: '/home',
-    component: home
-  }, {
-    path: '/prod',
-    component: prod,
-    children: [{
-      path: '',
-      name: 'prod-list',
-      component: prodList
-    }, {
-      path: ':num',
-      name: 'prod-detail',
-      component: prodDetail
-    }]
-  }, {
-    path: '/login',
-    name: '',
-    component: login
-  }, {
-    path: '/register',
-    name: '',
-    component: register
-  }, {
-    path: '/forget',
-    name: '',
-    component: forget
-  }, {
-    path: '/loan',
-    name: '',
-    component: loan
-  }, {
-    path: '/find',
-    name: '',
-    component: find
-  }, {
-    path: '/user',
-    name: 'user',
-    component: user
-  }, {
-    path: '*',
-    name: '',
-    component: notfind
-  }]
+    routes: [
+        {
+            path: '/',
+            redirect: '/home'
+        },
+        {
+            path: '/home',
+            component: Home
+        },
+        {
+            path: '/prod',
+            component: Prod,
+            children: [
+                {
+                  path: '',
+                  name: 'prod-list',
+                  component: ProdList
+                },
+                {
+                  path: ':num',
+                  name: 'prod-detail',
+                  component: ProdDetail
+                }
+            ]},
+        {
+            path: '/login',
+            name: '',
+            component: Login
+        },
+        {
+            path: '/register',
+            name: '',
+            component: Register
+        },
+        {
+            path: '/forget',
+            name: '',
+            component: Forget
+        },
+        {
+            path: '/loan',
+            name: '',
+            component: Loan
+        },
+        {
+            path: '/find',
+            name: '',
+            component: Find
+        },
+        {
+            path: '/user',
+            name: 'user',
+            component: User
+        },
+        {
+            path: '*',
+            name: '',
+            component: Notfind
+        }
+    ]
 })
