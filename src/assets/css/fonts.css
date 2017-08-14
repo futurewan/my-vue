@@ -1,0 +1,218 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?igu2nz');
+  src:  url('../fonts/icomoon.eot?igu2nz#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?igu2nz') format('truetype'),
+    url('../fonts/icomoon.woff?igu2nz') format('woff'),
+    url('../fonts/icomoon.svg?igu2nz#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sy-risk-test:before {
+  content: "\e93f";
+}
+.icon-delete:before {
+  content: "\e900";
+}
+.icon-close-white:before {
+  content: "\e901";
+}
+.icon-dialog-close:before {
+  content: "\e902";
+}
+.icon-iphone-white:before {
+  content: "\e903";
+}
+.icon-sy-clock:before {
+  content: "\e904";
+}
+.icon-sy-slideup:before {
+  content: "\e905";
+}
+.icon-sy-about:before {
+  content: "\e906";
+}
+.icon-sy-bank:before {
+  content: "\e907";
+}
+.icon-sy-edit:before {
+  content: "\e908";
+}
+.icon-sy-head:before {
+  content: "\e909";
+}
+.icon-sy-help:before {
+  content: "\e90a";
+}
+.icon-sy-ident:before {
+  content: "\e90b";
+}
+.icon-sy-Interest:before {
+  content: "\e90c";
+}
+.icon-sy-invest-limit:before {
+  content: "\e90d";
+}
+.icon-sy-Investment-amount:before {
+  content: "\e90e";
+}
+.icon-sy-kefu:before {
+  content: "\e90f";
+}
+.icon-sy-my-activity:before {
+  content: "\e910";
+}
+.icon-sy-my-coupon:before {
+  content: "\e911";
+}
+.icon-sy-my-creditor:before {
+  content: "\e912";
+}
+.icon-sy-my-friend:before {
+  content: "\e913";
+}
+.icon-sy-my-integral:before {
+  content: "\e914";
+}
+.icon-sy-my-invest:before {
+  content: "\e915";
+}
+.icon-sy-my-loan:before {
+  content: "\e916";
+}
+.icon-sy-my-ztou:before {
+  content: "\e917";
+}
+.icon-sy-otrphone:before {
+  content: "\e918";
+}
+.icon-sy-password-login:before {
+  content: "\e919";
+}
+.icon-sy-password-phone:before {
+  content: "\e91a";
+}
+.icon-sy-password-trade:before {
+  content: "\e91b";
+}
+.icon-sy-phone:before {
+  content: "\e91c";
+}
+.icon-sy-phone1:before {
+  content: "\e91d";
+}
+.icon-sy-raising-amount:before {
+  content: "\e91e";
+}
+.icon-sy-rangli:before {
+  content: "\e91f";
+}
+.icon-sy-repayment:before {
+  content: "\e920";
+}
+.icon-sy-set-password:before {
+  content: "\e921";
+}
+.icon-sy-sms:before {
+  content: "\e922";
+}
+.icon-sy-sub-del:before {
+  content: "\e923";
+}
+.icon-sy-tel2:before {
+  content: "\e924";
+}
+.icon-sy-transfer-condition:before {
+  content: "\e925";
+}
+.icon-sy-transfer-right:before {
+  content: "\e926";
+}
+.icon-sy-yzcode:before {
+  content: "\e927";
+}
+.icon-act-new:before {
+  content: "\e928";
+}
+.icon-help:before {
+  content: "\e929";
+}
+.icon-sy-house:before {
+  content: "\e92a";
+}
+.icon-sy-motor:before {
+  content: "\e92b";
+}
+.icon-sy-quick-iphone:before {
+  content: "\e92c";
+}
+.icon-sy-quick-weixin:before {
+  content: "\e92d";
+}
+.icon-sy-find:before {
+  content: "\e92e";
+}
+.icon-sy-find-on:before {
+  content: "\e92f";
+}
+.icon-sy-index:before {
+  content: "\e930";
+}
+.icon-sy-index-on:before {
+  content: "\e931";
+}
+.icon-sy-loan:before {
+  content: "\e932";
+}
+.icon-sy-loan-on:before {
+  content: "\e933";
+}
+.icon-sy-my:before {
+  content: "\e934";
+}
+.icon-sy-my-on:before {
+  content: "\e935";
+}
+.icon-sy-find2:before {
+  content: "\e936";
+}
+.icon-sy-find-on2:before {
+  content: "\e937";
+}
+.icon-sy-index2:before {
+  content: "\e938";
+}
+.icon-sy-index-on2:before {
+  content: "\e939";
+}
+.icon-sy-loan2:before {
+  content: "\e93a";
+}
+.icon-sy-loan-on2:before {
+  content: "\e93b";
+}
+.icon-sy-my2:before {
+  content: "\e93c";
+}
+.icon-sy-my-on2:before {
+  content: "\e93d";
+}
+.icon-sy-index-new:before {
+  content: "\e93e";
+}
