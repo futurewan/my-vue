@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+//  文件名必须一致，精确匹配
 const Home = r => require.ensure([], () => r(require('@/page/home/Home')), 'home')
 
 const Prod = r => require.ensure([], () => r(require('@/page/products/Prod')), 'prod')
