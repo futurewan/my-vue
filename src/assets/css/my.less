@@ -8,8 +8,6 @@
 @T_BLUE: #508cee;
 @T_WHITE: #fff;
 @T_BLACK: #000;
-
-
 *,
 *:before,
 *:after {
@@ -278,6 +276,7 @@ a img {
 .t-black {
     color: @T_BLACK
 }
+
 .fl {
     float: left
 }
@@ -988,7 +987,7 @@ table {
     .f20;
 }
 
-.icon-sy-index-on:before{
+.icon-sy-index-on:before {
     .t-imp;
     .f20;
 }
@@ -1067,6 +1066,10 @@ table {
 .w-nav .weui-bar__item_on {}
 
 // 覆盖vux样式
-.weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon > i, .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label{
-  color: @T_fe6246
+.w-container {
+    .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon,
+    .weui-tabbar__item.weui-bar__item_on .weui-tabbar__icon>i,
+    .weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+        color: @T_fe6246
+    }
 }
