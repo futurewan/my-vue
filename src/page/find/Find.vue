@@ -73,7 +73,7 @@ export default {
       demo06_index: 0,
       swiperItemIndex: 1,
       list2: list(),
-      // demo2: '金融大咖秀',
+      demo2: '商小赢说',
       demoDisabled: 'A',
       index: 0,
       getBarWidth: function (index) {
