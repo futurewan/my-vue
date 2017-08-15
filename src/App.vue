@@ -79,6 +79,6 @@ export default {
 </script>
 
 <style lang="less">
-@import 'assets/css/fonts.css';
-@import 'assets/css/my.less';
+    @import 'assets/css/fonts.css';
+    @import 'assets/css/my.less';
 </style>
