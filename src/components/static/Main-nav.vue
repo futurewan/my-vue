@@ -1,19 +1,19 @@
 <template>
     <tabbar slot="bottom">
         <tabbar-item link='/home' :selected='isHome'>
-            <span class="icon-sy-index" slot='icon'></span>
+            <span v-bind:class='[isHome?"icon-sy-index-on":"icon-sy-index"]' slot='icon'></span>
             <span slot='label'>首页</span>
         </tabbar-item>
         <tabbar-item link='/loan' :selected='isLoan'>
-            <span class="icon-sy-loan" slot='icon'></span>
+            <span v-bind:class='[isLoan?"icon-sy-loan-on":"icon-sy-loan"]' slot='icon'></span>
             <span slot='label'>借款</span>
         </tabbar-item>
         <tabbar-item link='/find' :selected='isFind'>
-            <span class="icon-sy-find" slot='icon'></span>
+            <span v-bind:class='[isFind?"icon-sy-find-on":"icon-sy-find"]' slot='icon'></span>
             <span slot='label'>发现</span>
         </tabbar-item>
         <tabbar-item link='/user' :selected='isUser'>
-            <span class="icon-sy-my" slot='icon'></span>
+            <span v-bind:class='[isUser?"icon-sy-my-on":"icon-sy-my"]' slot='icon'></span>
             <span slot='label'>我的</span>
         </tabbar-item>
     </tabbar>
