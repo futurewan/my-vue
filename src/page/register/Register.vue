@@ -1,15 +1,11 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+    <div class="register-box">
+
     </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      msg: 'register'
-    }
-  }
+    name: 'register'
 }
 </script>
