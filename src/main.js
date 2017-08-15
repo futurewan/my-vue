@@ -10,12 +10,11 @@ import FastClick from 'fastclick' // 使用 fastclick 解决移动端 300ms 点�
 
 import Vuex from 'vuex'
 import api from './plugin/api.plugin'
+Promise.polyfill()
 Vue.use(api)
 Vue.use(Vuex)
 
-Promise.polyfill()
-let store = new Vuex.Store({
-})
+let store = new Vuex.Store({})
 
 Vue.use(store)
 // Vue.use(Tabbar, TabbarItem, Group, Cell)

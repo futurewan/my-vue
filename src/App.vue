@@ -1,5 +1,5 @@
 <template>
-    <div style="height:100%;">
+    <div class="w-container">
         <welcome></welcome>
         <view-box ref="viewBox" body-padding-top="46px" body-padding-bottom="55px">
             <x-header class="w-header" style="width:100%;position:absolute;left:0;top:0;z-index:100;" slot="header" :left-options="{showBack:false}">{{$route.meta.title}}</x-header>
