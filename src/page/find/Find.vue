@@ -1,11 +1,21 @@
 <template>
   <div class="container">
     <swiper loop auto :list="demo06_list" :index="demo06_index" @on-index-change="demo06_onIndexChange"></swiper>
+    <!--tab栏目  -->
+      <div>
+       <tab :line-width=2 active-color='#fe6246' v-model="index">
+        <tab-item class="vux-center" :selected="demo2 === item" :disabled="index === 3" v-for="(item, index) in list2" @click="demo2 = item" :key="index">{{item}}</tab-item>
+      </tab>
+      <swiper v-model="index" height="100px" :show-dots="false">
+        <swiper-item v-for="(item, index) in list2" :key="index">
+          <div class="tab-swiper vux-center">{{item}}Container </div>
+        </swiper-item>
+      </swiper>
+    </div>
   </div>
 </template>
-
 <script>
-import { Swiper, SwiperItem, XButton, Divider } from 'vux'
+import { Tab, TabItem, Sticky, Divider, XButton, Swiper, SwiperItem } from 'vux'
 const baseList = [{
   url: 'javascript:',
   img: 'https://static.vux.li/demo/1.jpg',
@@ -33,12 +43,16 @@ const demoList = imgList.map((one, index) => ({
   url: 'javascript:',
   img: one
 }))
+const list = () => ['商小赢说', '金融大咖秀', '商赢佳人', '漫金融']
 export default {
   components: {
-    Swiper,
-    SwiperItem,
+    Tab,
+    TabItem,
+    Sticky,
+    Divider,
     XButton,
-    Divider
+    Swiper,
+    SwiperItem
   },
   ready () {
   },
@@ -57,68 +71,44 @@ export default {
     return {
       demo06_list: urlList,
       demo06_index: 0,
-      swiperItemIndex: 1
+      swiperItemIndex: 1,
+      list2: list(),
+      // demo2: '金融大咖秀',
+      demoDisabled: 'A',
+      index: 0,
+      getBarWidth: function (index) {
+        return (index + 1) * 22 + 'px'
+      }
     }
   }
 }
 </script>
-
-
 <style scoped>
-.copyright {
-  font-size: 12px;
-  color: #ccc;
-  text-align: center;
-}
-.text-scroll {
-  border: 1px solid #ddd;
-  border-left: none;
-  border-right: none;
-}
-.text-scroll p{
-  font-size: 12px;
-  text-align: center;
-  line-height: 30px;
-}
-.black {
-  background-color: #000;
-}
 .title{
   line-height: 100px;
   text-align: center;
   color: #fff;
 }
-.animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-.vux-indicator.custom-bottom {
-  bottom: 30px;
-}
-@-webkit-keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
-.fadeInUp {
-  animation-name: fadeInUp;
-}
 .swiper-demo-img img {
   width: 100%;
+}
+.box {
+  padding: 15px;
+}
+.active-6-1 {
+  color: rgb(252, 55, 140) !important;
+  border-color: rgb(252, 55, 140) !important;
+}
+.active-6-2 {
+  color: #04be02 !important;
+  border-color: #04be02 !important;
+}
+.active-6-3 {
+  color: rgb(55, 174, 252) !important;
+  border-color: rgb(55, 174, 252) !important;
+}
+.tab-swiper {
+  background-color: #fff;
+  height: 100px;
 }
 </style>
