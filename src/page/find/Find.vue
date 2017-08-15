@@ -50,7 +50,7 @@ export default {
       this.demo06_list = id === 1 ? baseList : demoList
     },
     demo06_onIndexChange (index) {
-      this.demo06_index = index;
+      this.demo06_index = index
     }
   },
   data () {
