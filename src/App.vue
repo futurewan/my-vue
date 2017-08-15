@@ -2,34 +2,25 @@
     <div style="height:100%;">
         <welcome></welcome>
         <view-box ref="viewBox" body-padding-top="46px" body-padding-bottom="55px">
-            <x-header class="w-header" style="width:100%;position:absolute;left:0;top:0;z-index:100;" slot="header" :left-options="{showBack:false}">This is the page title.</x-header>
-            <!--<nav v-if='isTopNav' class='weui-navbar top-nav'>
-                    <div class='go-back'>
-                        <a v-if='isToBack' v-on:click='toback'>返回</a>
-                    </div>
-                    <div class='navtitle flex1'>{{pageTitle | privacy(2)}}</div>
-                    <div class='top-menu'></div>
-                </nav>-->
+            <x-header class="w-header" style="width:100%;position:absolute;left:0;top:0;z-index:100;" slot="header" :left-options="{showBack:false}">{{$route.meta.title}}</x-header>
             <router-view></router-view>
-            <mainnav class='w-nav'></mainnav>
-            <!--<loading></loading>-->
+            <main-nav class='w-nav'></main-nav>
         </view-box>
     </div>
-</template>  
-
+</template>
 <script>
-import welcome from './components/welcome'
-import mainnav from './components/mainnav'
+import Welcome from './components/static/Welcome'
+import MainNav from './components/static/Main-nav'
 
 export default {
     name: 'app',
     components: {
-        welcome,
-        mainnav
+        Welcome,
+        MainNav
     },
-    // router,
     data() {
         return {
+            title: this.$children.title,
             isTopNav: false,
             isLoading: true,
             message: '我是信息',
@@ -42,12 +33,12 @@ export default {
             return '我是标题'
         }
     },
-    created: () => {
+    created () {
         const isWx = /MicroMessenger/.test(window.navigator.userAgent)
         window['isWx'] = isWx
         // this.isLoading = false
     },
-    mounted: function () {
+    mounted () {
         this.uphead(this.$route.path)
 
         // this.$router.afterEach((to, from) => {
@@ -69,7 +60,7 @@ export default {
                 history.back()
             }
         },
-        uphead: function (path) {
+        uphead (path) {
             let white = { '/home': true, '/loan': true, '/user': true, '/find': true }[path]
             this.isTopNav = !window['isWx']
             this.isTopNav && (this.isToBack = !white)
