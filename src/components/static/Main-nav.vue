@@ -1,5 +1,5 @@
 <template>
-    <tabbar slot="bottom">
+    <tabbar>
         <tabbar-item link='/home' :selected='isHome'>
             <span v-bind:class='[isHome?"icon-sy-index-on":"icon-sy-index"]' slot='icon'></span>
             <span slot='label'>首页</span>
@@ -21,22 +21,22 @@
 <script>
 export default {
     computed: {
-        isHome() {
+        isHome: function () {
             if (this.$route.path === '/home') {
                 return true
             }
         },
-        isLoan() {
+        isLoan: function () {
             if (this.$route.path === '/loan') {
                 return true
             }
         },
-        isFind() {
+        isFind: function () {
             if (this.$route.path === '/find') {
                 return true
             }
         },
-        isUser() {
+        isUser: function () {
             if (this.$route.path === '/user') {
                 return true
             }

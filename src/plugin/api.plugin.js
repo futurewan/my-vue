@@ -122,6 +122,23 @@ export default {
                         return value || undefined
                     }
                 }
+            },
+            toFixed: function (num, s) {
+                let times = Math.pow(10, s)
+                let des = num * times + 0.5 + ''
+                des = parseInt(des, 10) / times
+                return des + ''
+            },
+            iThrottle: function(frequency) {
+                return new Promise((resolve, reject) => {
+                    if (this.timerInput) {
+                        clearTimeout(this.timerInput)
+                        this.timerInput = null
+                    }
+                    this.timerInput = setTimeout(() => {
+                        resolve(true)
+                    }, frequency || 350)
+                })
             }
         }
     }

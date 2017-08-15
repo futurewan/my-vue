@@ -1,10 +1,10 @@
 <template>
     <div class="w-container">
         <welcome></welcome>
-        <view-box ref="viewBox" body-padding-top="46px" body-padding-bottom="55px">
-            <x-header class="w-header" style="width:100%;position:absolute;left:0;top:0;z-index:100;" slot="header" :left-options="{showBack:false}">{{$route.meta.title}}</x-header>
-            <router-view></router-view>
-            <main-nav class='w-nav'></main-nav>
+        <view-box ref="viewBox" :body-padding-top="bodyTopCP" body-padding-bottom="55px">
+            <x-header v-if='isShowTop' class="w-header" style="width:100%;position:absolute;left:0;top:0;z-index:100;" slot="header" :left-options="{showBack:false}">{{$route.meta.title}}{{mmm}}</x-header>
+            <router-view class="w-body"></router-view>
+            <main-nav slot="bottom" class='w-nav'></main-nav>
         </view-box>
     </div>
 </template>
@@ -21,24 +21,26 @@ export default {
     data() {
         return {
             title: this.$children.title,
-            isTopNav: false,
-            isLoading: true,
-            message: '我是信息',
-            isToBack: false
+            bodyTop: '0px'
         }
     },
     // 缓存计算后的变量或是监听依赖的变量更新值
     computed: {
-        pageTitle: function () {
-            return '我是标题'
+        isShowTop: function () {
+            return !window['isWx']
+        },
+        bodyTopCP: function () {
+            if (this.isShowTop) {
+                return '45px'
+            }
         }
     },
-    created () {
+    created() {
         const isWx = /MicroMessenger/.test(window.navigator.userAgent)
         window['isWx'] = isWx
         // this.isLoading = false
     },
-    mounted () {
+    mounted() {
         this.uphead(this.$route.path)
 
         // this.$router.afterEach((to, from) => {
@@ -50,6 +52,9 @@ export default {
     watch: {
         '$route'(to, from) {
             this.uphead(this.$route.path)
+        },
+        mmm: function () {
+            return new Date()
         }
     },
     methods: {
@@ -60,7 +65,7 @@ export default {
                 history.back()
             }
         },
-        uphead (path) {
+        uphead(path) {
             let white = { '/home': true, '/loan': true, '/user': true, '/find': true }[path]
             this.isTopNav = !window['isWx']
             this.isTopNav && (this.isToBack = !white)
