@@ -1,10 +1,10 @@
 <template>
     <div class="w-container">
         <welcome></welcome>
-        <view-box ref="viewBox" :body-padding-top="bodyTopCP" body-padding-bottom="55px">
-            <x-header v-if='isShowTop' class="w-header" slot="header" :left-options="{showBack:false}">{{$route.meta.title}}</x-header>
+        <view-box ref="viewBox" :body-padding-top="bodyTopCP" :body-padding-bottom="bodyBottomCP">
+            <x-header v-if='isTop' class="w-header" slot="header" :left-options="{showBack:!isNav}">{{$route.meta.title}}</x-header>
             <router-view class="w-body"></router-view>
-            <main-nav slot="bottom" class='w-nav'></main-nav>
+            <main-nav v-show='isNav'  slot="bottom" class='w-nav'></main-nav>
         </view-box>
     </div>
 </template>
@@ -24,30 +24,40 @@ export default {
     },
     data() {
         return {
-            title: this.$children.title,
-            bodyTop: '0px'
+            // title: this.$children.title
             //  变量初始化
         }
     },
     //  计算属性：可以进行字符串/数值运算
     computed: {
-        isShowTop: function () {
+        isTop: function () {
             return !window['isWx']
         },
         bodyTopCP: function () {
-            if (this.isShowTop) {
+            if (this.isTop) {
                 return '45px'
+            } else {
+                return '0'
             }
+        },
+        bodyBottomCP: function() {
+            if (this.isNav) {
+                return '45px'
+            } else {
+                return '0'
+            }
+        },
+        isNav: function () {
+            return { '/': true, '/home': true, '/loan': true, '/user': true, '/find': true }[this.$route.path]
         }
     },
     created() {
+        console.log(this.$children)
         const isWx = /MicroMessenger/.test(window.navigator.userAgent)
         window['isWx'] = isWx
         // this.isLoading = false
     },
     mounted() {
-        this.uphead(this.$route.path)
-
         // this.$router.afterEach((to, from) => {
         //     this.uphead(this.$route.path)
         // })
@@ -56,24 +66,9 @@ export default {
     },
     //  监听属性
     watch: {
-        '$route'(to, from) {
-            this.uphead(this.$route.path)
-        }
     },
     //  方法
     methods: {
-        toback() {
-            if (history.length < 2) {
-                location.href = location.host
-            } else {
-                history.back()
-            }
-        },
-        uphead(path) {
-            let white = { '/home': true, '/loan': true, '/user': true, '/find': true }[path]
-            this.isTopNav = !window['isWx']
-            this.isTopNav && (this.isToBack = !white)
-        }
     },
     //  Vue生命周期钩子函数
     beforeCreate() {

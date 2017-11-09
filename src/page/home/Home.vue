@@ -30,7 +30,7 @@ export default {
         // let body = document.getElementsByClassName('hello')[0]
         // let child = document.getElementsByClassName('first')[0]
         // console.log(child.contains(body))
-        this.api.ajax('getProList')
+        // this.api.ajax('getProList')
     },
     beforeUpdate: function () {
 

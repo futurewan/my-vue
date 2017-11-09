@@ -1,6 +1,6 @@
 // 将设置放入此文件中以覆盖默认设置
 {
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
     "files.autoSave": "off",
     "typescript.check.tscVersion": false,
     "editor.formatOnType": false,

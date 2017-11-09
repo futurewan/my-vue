@@ -6,8 +6,9 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
-    "build": "node build/build.js",
+    "build:jf": "cross-env VUE_CONFIG=jf node build/build.js",
+    "build:jr": "cross-env VUE_CONFIG=jr node build/build.js",
+    "build": "cross-env VUE_CONFIG=prod node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",

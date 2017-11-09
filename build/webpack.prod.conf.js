@@ -5,10 +5,14 @@ var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
+/* 一个可以插入 html 并且创建新的 .html 文件的插件 */
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+/* 一个 webpack 扩展，可以提取一些代码并且将它们和文件分离开 */ 
+/* 如果我们想将 webpack 打包成一个文件 css js 分离开，那我们需要这个插件 */
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
+console.log(process.env.NODE_ENV)
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
@@ -91,9 +95,9 @@ var webpackConfig = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*']
+        from: path.resolve(__dirname, '../src/MP_verify_6gYQXL7dhcLgtjlj.txt')
+        // to: config.build.assetsSubDirectory,
+        // ignore: ['.*']
       }
     ])
   ]

@@ -67,7 +67,10 @@ const router = new Router({
                 {
                   path: '/products/list',
                   name: 'prod-list',
-                  component: ProdList
+                  component: ProdList,
+                    meta: {
+                        title: '固收理财'
+                    }
                 },
                 {
                   path: '/products/detail/:id',
@@ -79,27 +82,40 @@ const router = new Router({
         {
             path: '/login',
             name: 'login',
-            component: Login
+            component: Login,
+            meta: {
+                title: '登录商赢金服'
+            }
         },
         {
             path: '/register',
             name: 'register',
-            component: Register
+            component: Register,
+            meta: {
+                title: '注册新账户'
+            }
         },
         {
             path: '/forget',
             name: 'forget',
-            component: Forget
+            component: Forget,
+            meta: {
+                title: '找回密码'
+            }
         },
         {
             path: '*',
             name: 'not-find',
-            component: NotFind
+            component: NotFind,
+            meta: {
+                title: '商赢金服'
+            }
         }
     ]
 })
-router.afterEach(route => {
-    document.title = route.meta.title
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
 })
 
 export default router

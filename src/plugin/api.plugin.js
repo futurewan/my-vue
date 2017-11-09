@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {
-    environment
-} from '../environments/environment'
+// import {
+//     environment
+// } from '../environments/environment'
 
 import {
     Api
@@ -18,14 +18,40 @@ export default {
             ajax: function (apiKey, option) {
                 // console.log(111, this.getApi)
                 let _api = this.getApi(apiKey).split('@')
-                // let res
+                let res
 
                 return Vue.http({
                     method: _api[1],
                     url: _api[0],
                     body: option && option.data || {}
                 }).then(response => {
-                    console.log(response)
+                    res = response.data
+                    let _token = this.storage.getSS('token')
+                    let _resCode = res['resCode']
+                    this.resState = _resCode
+                    if (_resCode === '0000') { // 返回成功
+                        let resToken
+                        if (res['data'] && res['data']['token']) {
+                            resToken = res['data']['token']
+                        }
+                        if (resToken && (!_token || resToken !== _token)) {
+                            this.storage.setSS('token', resToken)
+                            this.storage.setSS('user', res['data'] && res['data']['customerInfo'] ? res['data']['customerInfo'] : {})
+                        }
+                        if (option && option.success) {
+                            option.success.call(this, res)
+                        }
+                    } else if (_resCode === '9002') { // 系统维护
+                        location.href = process.env.act + '/maintain/index.html'
+                    } else if (_resCode !== '60003') {
+                        if (option && option.other) {
+                            option.other.call(this, res)
+                        } else if (res['resDesc']) {
+                            alert(res['resDesc'])
+                        }
+                    }
+                    this.canActivate()
+                    return response
                 }).catch((error) => {
                     if (!error.message) {
                         error.message = '网络错误！'
@@ -38,8 +64,34 @@ export default {
                     return error
                 })
             },
+            canActivate: function () { // 实例名必须为canActivate
+                if (this.resState === '60003') {
+                    const rurl = this.router.url.replace(/m=[^&]+&?/g, '')
+                    if (!/^\/login(\?(.+))?$/.test(rurl)) {
+                        this.showlogMsg()
+                        this.router.navigate(['login'], {
+                            queryParams: {
+                                ref: rurl
+                            },
+                            replaceUrl: true
+                        })
+                        this.removeLS()
+                    }
+                    return false
+                } else if (this.resState === '30033') {
+                    alert('请先绑定手机号或登录')
+                    const wxid = this.getLS('wxid')
+                    const rurl = wxid ? 'login/bindwx?wxid=' + wxid : 'login/quick'
+                    this.router.navigateByUrl(rurl, {
+                        replaceUrl: true
+                    })
+                    this.removeLS()
+                    return false
+                }
+                return true
+            },
             getApi: function (key) {
-                let prx = environment.prefix
+                let prx = process.env.prefix
                 let _api = Api[key]
                 if (!/\/$/.test(prx) && !/^\//.test(_api)) {
                     _api = '/' + _api
@@ -129,7 +181,7 @@ export default {
                 des = parseInt(des, 10) / times
                 return des + ''
             },
-            iThrottle: function(frequency) {
+            iThrottle: function (frequency) {
                 return new Promise((resolve, reject) => {
                     if (this.timerInput) {
                         clearTimeout(this.timerInput)
