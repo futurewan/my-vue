@@ -30,7 +30,10 @@ export default {
         // let body = document.getElementsByClassName('hello')[0]
         // let child = document.getElementsByClassName('first')[0]
         // console.log(child.contains(body))
-        // this.api.ajax('getProList')
+        this.api.ajax('getProList',
+        {
+            data: { iPage: 1, pageSize: 3 }
+        })
     },
     beforeUpdate: function () {
 
@@ -48,6 +51,3 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

@@ -8,6 +8,6 @@
 // })
 module.exports = {  
   NODE_ENV: '"development"',
-  prefix: '"//api.sy6.com/eurekaRoute2/v250"',
+  prefix: '"//api.sy6.com/eurekaRoute3/v262"',
   act: '"https://act.sy6.com"'
 }

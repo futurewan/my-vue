@@ -5,7 +5,6 @@ var config = require('../config') // 获取 config/index.js 的默认配置
 ** 如果 Node 的环境无法判断当前是 dev / product 环境
 ** 使用 config.dev.env.NODE_ENV 作为当前的环境
 */
-console.log(process.env.NODE_ENV)
 if (!process.env.NODE_ENV) process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 
 var opn = require('opn') // 一个可以强制打开浏览器并跳转到指定 url 的插件
@@ -69,6 +68,7 @@ app.use(hotMiddleware)
 // 拼接 static 文件夹的静态资源路径
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 // 为静态资源提供响应服务
+// console.log(staticPath,express.static('./static'))
 app.use(staticPath, express.static('./static'))
 
 var uri = 'http://localhost:' + port

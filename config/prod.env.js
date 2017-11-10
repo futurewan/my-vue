@@ -1,5 +1,5 @@
 module.exports = {  
   NODE_ENV: '"production"',
-  prefix: '"//api.sy6.com/eurekaRoute2/v250"',
-  act: '"https://act.sy6.com"'
+  prefix: '"//api.sy8.com/eurekaFrontBK"',
+  act: '"https://act.sy8.com"'
 }

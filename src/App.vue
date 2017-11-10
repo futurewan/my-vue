@@ -9,9 +9,6 @@
     </div>
 </template>
 <script>
-//  公共css引入
-import '@/assets/css/fonts.css'
-import '@/assets/css/my.less'
 //  文件名：必须一致，精确匹配
 //  组件名：把MainNav写成main-nav标签
 import Welcome from './components/static/Welcome'
@@ -97,6 +94,13 @@ export default {
     }
 }
 </script>
+<style>
+    @import './assets/css/fonts.css';
+</style>
+<style lang="less">
+    @import './assets/css/my.less'; 
+</style>
+
 <style lang="less" scoped>
 .w-header {
     width: 100%;

@@ -3,28 +3,33 @@ import axios from 'axios'
 //     environment
 // } from '../environments/environment'
 
-import {
-    Api
-} from './api'
+import { Api } from './api'
 // import
 export default {
     install(Vue) {
         Vue.prototype.$http = axios
         Vue.http = axios
-        axios.defaults.headers['Content-Type'] = 'application/json'
-        axios.defaults.headers['client'] = '5'
-
         Vue.prototype.api = {
             ajax: function (apiKey, option) {
-                // console.log(111, this.getApi)
+                let token = this.storage.getSS('token')
+                axios.defaults.headers['Content-Type'] = 'application/json'
+                axios.defaults.headers['client'] = '5'
+                token && (axios.defaults.headers['auth-token'] = token)
                 let _api = this.getApi(apiKey).split('@')
                 let res
-
-                return Vue.http({
+                let config = {
                     method: _api[1],
-                    url: _api[0],
-                    body: option && option.data || {}
-                }).then(response => {
+                    url: _api[0]
+                }
+                if (option && option.data) {
+                    if (_api[1] === 'Get') {
+                        config.params = option.data
+                    } else if (_api[1] === 'Post') {
+                        config.data = option.data
+                    }
+                }
+
+                return Vue.http(config).then(response => {
                     res = response.data
                     let _token = this.storage.getSS('token')
                     let _resCode = res['resCode']
