@@ -11,8 +11,8 @@
 <script>
 //  文件名：必须一致，精确匹配
 //  组件名：把MainNav写成main-nav标签
-import Welcome from './components/static/Welcome'
-import MainNav from './components/static/MainNav'
+import Welcome from './components/static/welcome'
+import MainNav from './components/static/mainNav'
 export default {
     name: 'app',
     components: {
@@ -45,7 +45,7 @@ export default {
             }
         },
         isNav: function () {
-            return { '/': true, '/home': true, '/loan': true, '/user': true, '/find': true }[this.$route.path]
+            return { '/': true, '/home': true, '/form': true, '/more': true }[this.$route.path]
         }
     },
     created() {
@@ -95,7 +95,7 @@ export default {
 }
 </script>
 <style>
-    @import './assets/css/fonts.css';
+    @import './assets/css/iconfont.css';
 </style>
 <style lang="less">
     @import './assets/css/my.less'; 

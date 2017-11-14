@@ -19,6 +19,9 @@
             "autoFix": true
         }
     ],
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "vetur.format.defaultFormatter.ts": "vscode-typescript",
+    "prettier.tabWidth": 4,
     "search.exclude": {
         "**/node_modules": true,
         "**/bower_components": true,

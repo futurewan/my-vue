@@ -1,20 +1,16 @@
 <template>
     <tabbar>
         <tabbar-item link='/home' :selected='isHome'>
-            <span :class='[isHome?"icon-sy-index-on":"icon-sy-index"]' slot='icon'></span>
+            <span :class='[isHome?"icon-home":"icon-home"]' slot='icon'></span>
             <span slot='label'>首页</span>
         </tabbar-item>
-        <tabbar-item link='/loan' :selected='isLoan'>
-            <span :class='[isLoan?"icon-sy-loan-on":"icon-sy-loan"]' slot='icon'></span>
-            <span slot='label'>借款</span>
+        <tabbar-item link='/form' :selected='isLoan'>
+            <span :class='[isForm?"icon-css":"icon-css"]' slot='icon'></span>
+            <span slot='label'>表单</span>
         </tabbar-item>
-        <tabbar-item link='/find' :selected='isFind'>
-            <span :class='[isFind?"icon-sy-find-on":"icon-sy-find"]' slot='icon'></span>
-            <span slot='label'>发现</span>
-        </tabbar-item>
-        <tabbar-item link='/user' :selected='isUser'>
-            <span :class='[isUser?"icon-sy-my-on":"icon-sy-my"]' slot='icon'></span>
-            <span slot='label'>我的</span>
+        <tabbar-item link='/more' :selected='isUser'>
+            <span :class='[isMore?"icon-plugin":"icon-plugin"]' slot='icon'></span>
+            <span slot='label'>更多</span>
         </tabbar-item>
     </tabbar>
 </template>
@@ -27,18 +23,13 @@ export default {
                 return true
             }
         },
-        isLoan: function () {
-            if (this.$route.path === '/loan') {
+        isForm: function () {
+            if (this.$route.path === '/form') {
                 return true
             }
         },
-        isFind: function () {
-            if (this.$route.path === '/find') {
-                return true
-            }
-        },
-        isUser: function () {
-            if (this.$route.path === '/user') {
+        isMore: function () {
+            if (this.$route.path === '/more') {
                 return true
             }
         }

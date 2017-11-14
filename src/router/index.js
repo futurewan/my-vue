@@ -1,25 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 //  文件名必须一致，精确匹配
-const Home = r => require.ensure([], () => r(require('@/page/home/Home')), 'home')
+const Home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
+const Form = r => require.ensure([], () => r(require('@/page/form/form')), 'form')
 
-const Prod = r => require.ensure([], () => r(require('@/page/products/Prod')), 'prod')
-const ProdList = r => require.ensure([], () => r(require('@/page/products/ProdList')), 'prod')
-const ProdDetail = r => require.ensure([], () => r(require('@/page/products/ProdDetail')), 'prod')
+const Prod = r => require.ensure([], () => r(require('@/page/products/prod')), 'prod')
+const ProdList = r => require.ensure([], () => r(require('@/page/products/prodList')), 'prod')
+const ProdDetail = r => require.ensure([], () => r(require('@/page/products/prodDetail')), 'prod')
 
-const Login = r => require.ensure([], () => r(require('@/page/login/Login')), 'login')
+const Login = r => require.ensure([], () => r(require('@/page/login/login')), 'login')
 
-const Register = r => require.ensure([], () => r(require('@/page/register/Register')), 'register')
+const Register = r => require.ensure([], () => r(require('@/page/register/register')), 'register')
 
-const Forget = r => require.ensure([], () => r(require('@/page/forget/Forget')), 'forget')
+const Forget = r => require.ensure([], () => r(require('@/page/forget/forget')), 'forget')
 
-const Loan = r => require.ensure([], () => r(require('@/page/loan/Loan')), 'loan')
+const more = r => require.ensure([], () => r(require('@/page/more/more')), 'more')
 
-const Find = r => require.ensure([], () => r(require('@/page/find/Find')), 'find')
-
-const User = r => require.ensure([], () => r(require('@/page/user/User')), 'user')
-
-const NotFind = r => require.ensure([], () => r(require('@/page/notfind/NotFind')), 'not-find')
+const NotFind = r => require.ensure([], () => r(require('@/page/notfind/notFind')), 'not-find')
 
 Vue.use(Router)
 
@@ -31,31 +28,23 @@ const router = new Router({
             alias: '/home',
             component: Home,
             meta: {
-                title: '商赢金服'
+                title: '首页'
             }
         },
         {
-            path: '/loan',
-            name: 'loan',
-            component: Loan,
+            path: '/form',
+            name: 'form',
+            component: Form,
             meta: {
-                title: '借款'
+                title: 'form样式'
             }
         },
         {
-            path: '/find',
-            name: 'find',
-            component: Find,
+            path: '/more',
+            name: 'more',
+            component: more,
             meta: {
-                title: '发现'
-            }
-        },
-        {
-            path: '/user',
-            name: 'user',
-            component: User,
-            meta: {
-                title: '我的'
+                title: '更多'
             }
         },
         {
@@ -84,7 +73,7 @@ const router = new Router({
             name: 'login',
             component: Login,
             meta: {
-                title: '登录商赢金服'
+                title: '登录'
             }
         },
         {
@@ -108,7 +97,7 @@ const router = new Router({
             name: 'not-find',
             component: NotFind,
             meta: {
-                title: '商赢金服'
+                title: 'demo'
             }
         }
     ]
