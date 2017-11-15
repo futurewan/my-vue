@@ -1,8 +1,10 @@
 <template>
     <div>
-        <i class="fa fa-home"></i>
-        <div style="height:700px"></div>
-        11111
+        <group label-width="4.5em">
+            <cell title="flexbox" is-link link="/home/flexbox" inline-desc=""></cell>
+            <cell title="Cell" is-link></cell>
+        </group>
+        <router-view></router-view>
     </div>
 </template>
 <script>
@@ -23,17 +25,10 @@ export default {
 
     },
     mounted: function () {
-        // let a = new Vue({
-        //     el: '.hello'
-        // })
-        // console.log(a)
-        // let body = document.getElementsByClassName('hello')[0]
-        // let child = document.getElementsByClassName('first')[0]
-        // console.log(child.contains(body))
         this.api.ajax('getProList',
-        {
-            data: { iPage: 1, pageSize: 3 }
-        })
+            {
+                data: { iPage: 1, pageSize: 3 }
+            })
     },
     beforeUpdate: function () {
 

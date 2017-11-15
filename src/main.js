@@ -17,7 +17,6 @@ Vue.use(Vuex)
 let store = new Vuex.Store({})
 
 Vue.use(store)
-// Vue.use(Tabbar, TabbarItem, Group, Cell)
 // Vue.config.productionTip = true
 
 // 导航开始时

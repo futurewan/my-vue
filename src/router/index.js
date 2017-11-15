@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 //  文件名必须一致，精确匹配
-const Home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
-const Form = r => require.ensure([], () => r(require('@/page/form/form')), 'form')
+const home = r => require.ensure([], () => r(require('@/page/home/home')), 'home')
+const homeRouter = r => require.ensure([], () => r(require('@/page/home/home-router')), 'home')
+const flexbox = r => require.ensure([], () => r(require('@/page/home/flexbox')), 'flexbox')
+const form = r => require.ensure([], () => r(require('@/page/form/form')), 'form')
 
-const Prod = r => require.ensure([], () => r(require('@/page/products/prod')), 'prod')
+const prodRouter = r => require.ensure([], () => r(require('@/page/products/prod')), 'prod')
 const ProdList = r => require.ensure([], () => r(require('@/page/products/prodList')), 'prod')
 const ProdDetail = r => require.ensure([], () => r(require('@/page/products/prodDetail')), 'prod')
 
@@ -19,22 +21,38 @@ const more = r => require.ensure([], () => r(require('@/page/more/more')), 'more
 const NotFind = r => require.ensure([], () => r(require('@/page/notfind/notFind')), 'not-find')
 
 Vue.use(Router)
-
 const router = new Router({
     routes: [
         {
             path: '/',
-            name: 'home',
+            component: home,
             alias: '/home',
-            component: Home,
+            name: 'home',
             meta: {
                 title: '首页'
             }
         },
         {
+            path: '/home',
+            component: homeRouter,
+            meta: {
+                title: '首页'
+            },
+            children: [
+                {
+                    path: 'flexbox',
+                    name: 'flexbox',
+                    component: flexbox,
+                    meta: {
+                        title: 'flexbox'
+                    }
+                }
+            ]
+        },
+        {
             path: '/form',
             name: 'form',
-            component: Form,
+            component: form,
             meta: {
                 title: 'form样式'
             }
@@ -51,10 +69,10 @@ const router = new Router({
             path: '/products',
             name: 'products',
             redirect: '/products/list',
-            component: Prod,
+            component: prodRouter,
             children: [
                 {
-                  path: '/products/list',
+                  path: 'list',
                   name: 'prod-list',
                   component: ProdList,
                     meta: {
@@ -62,7 +80,7 @@ const router = new Router({
                     }
                 },
                 {
-                  path: '/products/detail/:id',
+                  path: 'detail/:id',
                   name: 'prod-detail',
                   component: ProdDetail
                 }
@@ -97,13 +115,13 @@ const router = new Router({
             name: 'not-find',
             component: NotFind,
             meta: {
-                title: 'demo'
+                title: 'not-find'
             }
         }
     ]
 })
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title
+  document.title = to.meta.title || 'vue'
   next()
 })
 

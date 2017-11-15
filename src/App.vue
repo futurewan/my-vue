@@ -49,7 +49,7 @@ export default {
         }
     },
     created() {
-        console.log(this.$children)
+        // console.log(this.$children)
         const isWx = /MicroMessenger/.test(window.navigator.userAgent)
         window['isWx'] = isWx
         // this.isLoading = false
