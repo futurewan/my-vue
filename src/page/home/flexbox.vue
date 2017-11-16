@@ -1,7 +1,18 @@
 <template>
     <div>
-        <div class="box-l">
-            <div class="item">1</div>
+        <div class="dix box1">
+            <div class="item-m"></div>
+        </div>
+        <div class="dix box2">
+            <div class="item-m"></div>
+        </div>
+        <div class="dix box3">
+            <div class="item-s"></div>
+            <div class="item-s"></div>
+        </div>
+        <div class="dix box4">
+            <div class="item-s"></div>
+            <div class="item-s"></div>
         </div>
   </div>
 </template>
@@ -18,22 +29,56 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+@E1E3E5:#E1E3E5;
+.bg-E1E3E5{background: @E1E3E5;}
+.mg10{margin:10px}
 .box-l {
     width:200px;
     height: 200px;
-    background: #F7F9FB;
-    /* flex-direction: row;
-     flex-wrap:wrap; 
-     flex-flow:<flex-direction> || <flex-wrap>
-    justify-content: center; 
-    align-items:flex-start;
-    align-content: space-between; */
 }
+.box-s {
+    width:100px;
+    height: 100px;
+}
+.box1{
+    .box-s;
+    .mg10;
+    .bg-E1E3E5;
+    justify-content:flex-end;
+    align-items: flex-end;
+}
+.box2{
+    .box-s;
+    .mg10;
+    .bg-E1E3E5;
+    justify-content:center;
+    align-items: center;
+}
+.box3{
+    .box-s;
+    .mg10;
+    .bg-E1E3E5;
+    justify-content: space-between;
+}
+.box4{
+    .box-s;
+    .mg10;
+    .bg-E1E3E5;
+    flex-direction: column;
+}
+
+
 .item-s{
     width:20px;
     height: 20px;
+    background: #552424;
+}
 
+.item-m{
+    width:50px;
+    height: 50px;
+    background: #5BC0EB;
 }
 .flex .item {
     /* flex: 1; 
