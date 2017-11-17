@@ -1,10 +1,8 @@
 <template>
     <div>
         <group label-width="4.5em">
-            <cell title="flexbox" is-link link="/home/flexbox" inline-desc=""></cell>
-            <cell title="Cell" is-link></cell>
+            <cell  v-for="group in grouplist" v-bind:title="group.title" is-link :link="group.link" inline-desc=""></cell>
         </group>
-        <router-view></router-view>
     </div>
 </template>
 <script>
@@ -12,8 +10,14 @@ export default {
     name: 'hello',
     data() {
         return {
-            msg: 'Welcome to Your Vue.js App',
-            message: '我是信息'
+            grouplist: [{
+                title: 'flexbox',
+                link: '/home/flexbox'
+            },
+            {
+                title: 'transform',
+                link: '/home/transform'
+            }]
         }
     },
     beforeCreate: function () {
@@ -25,10 +29,10 @@ export default {
 
     },
     mounted: function () {
-        this.api.ajax('getProList',
-            {
-                data: { iPage: 1, pageSize: 3 }
-            })
+        // this.api.ajax('getProList',
+        //     {
+        //         data: { iPage: 1, pageSize: 3 }
+        //     })
     },
     beforeUpdate: function () {
 

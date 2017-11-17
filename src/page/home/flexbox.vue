@@ -14,6 +14,21 @@
             <div class="item-s"></div>
             <div class="item-s"></div>
         </div>
+        <div class="dix box5">
+            <div class="item-s"></div>
+            <div class="item-s"></div>
+            <div class="item-s"></div>
+        </div>
+        <div class="dix box6">
+            <div class="column">
+                <div class="item-s"></div>
+                <div class="item-s"></div>
+            </div>
+            <div class="column">
+                <div class="item-s"></div>
+                <div class="item-s"></div>
+            </div>
+        </div>
   </div>
 </template>
 
@@ -60,13 +75,42 @@ export default {
     .mg10;
     .bg-E1E3E5;
     justify-content: space-between;
+    align-items: center;
 }
 .box4{
     .box-s;
     .mg10;
     .bg-E1E3E5;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
+.box5{
+    .box-s;
+    .mg10;
+    .bg-E1E3E5;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.box5 .item-s:nth-child(2){
+    align-self: center;
+}
+.box5 .item-s:nth-child(3){
+    align-self: flex-end;
+}
+.box6{
+    .box-s;
+    .mg10;
+    .bg-E1E3E5;
+    flex-wrap:wrap;
+    align-content: space-between;
+}
+.box6 .column{
+    flex:0 1 100%; 
+    display:flex;
+    justify-content: space-between;
+}
+
 
 
 .item-s{
